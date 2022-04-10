@@ -16,7 +16,8 @@ eriehealth_data <- cityhealth_data %>%
 #Buffalo filtering===
 #Buffalo tracts==
 buffalo_tracts <- read_csv("../census_data/scripts/utilities/buffalo_tracts.csv",
-                           col_types = cols(tract = col_character()))
+                           col_types = cols(tract = col_character())) %>%
+  mutate(tract = if_else(tract == "1.1","1.10",tract))
 
 #filtering for buffalo tracts==
 buffalohealth_data <- eriehealth_data %>%
